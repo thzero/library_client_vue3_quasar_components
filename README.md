@@ -5,3 +5,7 @@
 ### Installation
 
 Include as a submodule namned 'library_vue_quasar' in the Vue application's source folder.
+
+```
+git submodule add https://github.com/thzero/library_client_vue_quasar "src/library_vue_quasar"
+```
