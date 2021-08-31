@@ -1,6 +1,8 @@
 <script>
 import LibraryConstants from '@thzero/library_client/constants';
 
+import GlobalUtility from '@thzero/library_client/utility/global';
+
 import Response from '@thzero/library_common/response';
 
 import QFormControl from './form/VFormControl';
@@ -38,7 +40,7 @@ export default {
 	},
 	async created() {
 		await this.reset(this.correlationId(), null);
-		this.serviceUsers = this.$injector.getService(LibraryConstants.InjectorKeys.SERVICE_USER);
+		this.serviceUsers = GlobalUtility.$injector.getService(LibraryConstants.InjectorKeys.SERVICE_USER);
 	},
 	async mount() {
 		await this.reset(this.correlationId(), null);
