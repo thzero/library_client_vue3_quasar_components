@@ -40,7 +40,7 @@
 </template>
 
 <script>
-// import VueUtility from '@/library_vue/utility/index';
+// import VueUtility from '@thzero/library_client_vue3/utility/index';
 
 import baseConfirmationDialog from '@/library_vue/components/baseConfirmationDialog';
 
