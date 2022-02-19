@@ -142,7 +142,7 @@ export default {
 	name: 'QOpenSource',
 	extends: baseOpenSource,
 	setup(props) {
-		return Object.assign(baseOpenSource.setup(props), {
+			return Object.assign(baseOpenSource.setup(props), {
 		});
 	}
 };
