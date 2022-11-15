@@ -13,7 +13,7 @@
 import baseMarkdown from '@/library_vue/components/markup/baseMarkdown';
 
 export default {
-	name: 'Markdown',
+	name: 'QMarkdown',
 	extends: baseMarkdown,
 	setup(props) {
 		return Object.assign(baseMarkdown.setup(props), {
