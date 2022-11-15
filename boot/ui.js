@@ -2,6 +2,7 @@
 import {
 	Quasar,
 	Loading
+	// Notify
 } from 'quasar';
 
 import '@quasar/extras/material-icons/material-icons.css';
@@ -10,22 +11,29 @@ import '@quasar/extras/material-icons/material-icons.css';
 import '@/styles/quasar.sass';
 
 export default async ({
-	framework
+	framework,
+	options
 }) => {
-	const options = Object.assign({
+	const options1 = Object.assign({
 			config: {},
 			plugins: []
-		});
-		// ,
-		// quasarUserOptions);
+		}, options);
 
 	try {
-		if (options.plugins[Loading] == null)
-			options.plugins.push(Loading);
+		if (options1.plugins[Loading] == null)
+			// options1.plugins.push(Loading);
+			if (Array.isArray(options1.plugins))
+				options1.plugins.push(Loading);
+			else
+				options.plugins.Loading = Loading;
+			// if (options1.plugins[Notify] == null) {
+			// 	options1.plugins.push(Notify);
+			// 	options1.config = { /* look at QuasarConfOptions from the API card */ };
+			// }
 	}
 	catch (err) {
 		console.log(err);
 	}
 
-	framework.use(Quasar, options);
+	framework.use(Quasar, options1);
 };
