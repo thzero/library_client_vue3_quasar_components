@@ -4,7 +4,7 @@
 			v-model="dialogSignal"
 			persistent
 			:scrollable="scrollableI"
-			:fullscreen="fullscreen"
+			:maximized="fullscreenInternal"
 			@keydown.esc="handleCancel"
 		>
 			<q-card
@@ -78,6 +78,8 @@
 </template>
 
 <script>
+import QVueUtility from '../../utility/index';
+
 import baseFormDialogControl from '@/library_vue/components/form/baseFormDialogControl';
 import QConfirmationDialog from '../QConfirmationDialog';
 
@@ -95,6 +97,11 @@ export default {
 		internalItem: null,
 		invalid: true
 	}),
+	computed: {
+		fullscreenInternal() {
+			return QVueUtility.fullscreen(this.$q);
+		}
+	},
 	watch: {
 		// Handles external model changes.
 		validation(value) {
