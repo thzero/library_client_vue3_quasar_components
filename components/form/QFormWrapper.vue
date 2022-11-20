@@ -44,7 +44,7 @@
 					text
 					@click="handleClear"
 				>
-					{{ $t('buttons.clear') }}
+					{{ $t(buttonClearName) }}
 				</q-btn>
 				<q-btn
 					v-if="buttonOk"
@@ -53,7 +53,7 @@
 					text
 					@click="submit"
 				>
-					{{ $t(buttonName) }}
+					{{ $t(buttonOkName) }}
 				</q-btn>
 				<slot name="buttons_post" />
 			</q-card-actions>
@@ -83,6 +83,10 @@ export default {
 			type: Boolean,
 			default: true
 		},
+		buttonClearName: {
+			type: String,
+			default: 'buttons.clear'
+		},
 		buttonDelete: {
 			type: Boolean,
 			default: false
@@ -91,7 +95,7 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		buttonName: {
+		buttonOkName: {
 			type: String,
 			default: 'buttons.ok'
 		},
