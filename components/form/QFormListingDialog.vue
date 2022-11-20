@@ -82,11 +82,11 @@ export default {
 	watch: {
 		// Handles external model changes.
 		validation(value) {
-			console.log('v.invalid: ' + value.$invalid);
-			console.log('v.error: ' + value.$error);
-			console.log('v.errors: ' + JSON.stringify(value));
+			// console.log('v.invalid: ' + value.$invalid);
+			// console.log('v.error: ' + value.$error);
+			// console.log('v.errors: ' + JSON.stringify(value));
 			this.invalid = value.$invalid;
-			console.log('v.invalid: ' + this.invalid);
+			// console.log('v.invalid: ' + this.invalid);
 		}
 	}
 };

@@ -78,30 +78,26 @@
 </template>
 
 <script>
-import QVueUtility from '../../utility/index';
+import useVuelidate from '@vuelidate/core';
 
-import baseFormDialogControl from '@/library_vue/components/form/baseFormDialogControl';
+import baseEdit from '@/library_vue/components/baseEdit';
 import QConfirmationDialog from '../QConfirmationDialog';
 
 export default {
-	name: 'QFormDialog',
+	name: 'QForm',
 	components: {
 		QConfirmationDialog
 	},
-	extends: baseFormDialogControl,
+	extends: baseEdit,
 	setup (props) {
-		return Object.assign(baseFormDialogControl.setup(props), {
+		return Object.assign(baseEdit.setup(props), {
+			validation: useVuelidate()
 		});
 	},
 	data: () => ({
 		internalItem: null,
 		invalid: true
 	}),
-	computed: {
-		fullscreenInternal() {
-			return QVueUtility.fullscreen(this.$q);
-		}
-	},
 	watch: {
 		// Handles external model changes.
 		validation(value) {
