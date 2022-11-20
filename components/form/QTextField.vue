@@ -5,6 +5,7 @@
 		:readonly="readonly"
 		:hint="$attrs.hint"
 		:label="$attrs.label"
+		:dense="dense"
 	>
 	</q-input>
 </template>
@@ -16,6 +17,10 @@ export default {
 	name: 'QTextFieldWithValidation',
 	extends: baseControlEdit,
 	props: {
+		dense: {
+			type: Boolean,
+			default: false
+		},
 		readonly: {
 			type: Boolean,
 			default: false

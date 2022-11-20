@@ -8,6 +8,9 @@
 			@keydown.esc="handleCancel"
 		>
 			<q-card
+				flat
+				bordered
+				dense
 				:style="{ maxWidth: maxWidth, width: width }"
 			>
 				<q-card-section class="text-h5">
