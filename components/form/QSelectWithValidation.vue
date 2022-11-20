@@ -8,6 +8,7 @@
 		:hint="$attrs.hint"
 		:label="$attrs.label"
 		:multiple="multiple"
+		:dense="dense"
 		emit-value
 		map-options
 	>
@@ -42,6 +43,10 @@ export default {
 	name: 'QSelectWithValidation',
 	extends: baseControlEdit,
 	props: {
+		dense: {
+			type: Boolean,
+			default: false
+		},
 		rules: {
 			type: [Object, String],
 			default: ''

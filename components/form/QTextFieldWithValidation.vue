@@ -8,6 +8,7 @@
 		:label="$attrs.label"
 		:maxcount="maxcount"
 		:mincount="mincount"
+		:dense="dense"
 	>
 		<template v-slot:append>
 			<span :class="countClass">{{ count }}</span>
@@ -32,6 +33,10 @@ export default {
 	name: 'QTextFieldWithValidation',
 	extends: baseControlEdit,
 	props: {
+		dense: {
+			type: Boolean,
+			default: false
+		},
 		maxcount: {
 			type: Number,
 			default: null
