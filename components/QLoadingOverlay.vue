@@ -21,9 +21,9 @@ export default {
 		const close = () => {
 			if (timer !== null) {
 				clearTimeout(timer);
-				$q.loading.hide();
 				timer = null;
 			};
+			$q.loading.hide();
 		};
 
 		if (props.timeout) {
@@ -36,22 +36,20 @@ export default {
 
 		watch(signalI, (value, prevValue) => {
 			if (value) {
-				$q.loading.show({
-					message: upstream.displayMessage
-				});
-
-				if (props.timeout) {
-					timer = setTimeout(() => {
-						$q.loading.hide();
-						timer = null;
-					}, props.timeout);
-				}
-
-				return;
+				close();
 			}
-
-			close();
 		});
+
+		$q.loading.show({
+			message: upstream.displayMessage.value
+		});
+
+		if (props.timeout) {
+			timer = setTimeout(() => {
+				$q.loading.hide();
+				timer = null;
+			}, props.timeout);
+		}
 
 		return Object.assign(upstream, {
 		});
