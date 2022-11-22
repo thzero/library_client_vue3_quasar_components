@@ -27,9 +27,11 @@
 
 <script>
 import { computed, getCurrentInstance, onMounted, ref } from 'vue';
-import { useStore } from 'vuex';
+
+import LibraryConstants from '@thzero/library_client/constants';
 
 import LibraryUtility from '@thzero/library_common/utility';
+import GlobalUtility from '@thzero/library_client/utility/global';
 
 import base from '@/library_vue/components/base';
 import QVersion from './QVersion';
@@ -51,12 +53,13 @@ export default {
 			return LibraryUtility.isDev;
 		});
 
-		const store = useStore();
 		const instance = getCurrentInstance();
 
+		const serviceStore = GlobalUtility.$injector.getService(LibraryConstants.InjectorKeys.SERVICE_STORE);
+
 		onMounted(async () => {
-			await store.dispatcher.root.getVersion(instance.ctx.correlationId());
-			version.value = store.state.version;
+			await serviceStore.dispatcher.getVersion(instance.ctx.correlationId());
+			version.value = serviceStore.state.version;
 		});
 
 		return Object.assign(base.setup(props), {

@@ -29,9 +29,10 @@ class Utility {
 			let nameLookup = id;
 			if (funcName)
 				nameLookup = funcName(l);
-			let name = trans(prefix + nameLookup);
-			if (String.isNullOrEmpty(name))
-				name = trans(prefix + nameLookup + '.title');
+			nameLookup = prefix + nameLookup;
+			let name = trans(nameLookup);
+			if (String.isNullOrEmpty(name) || name === nameLookup)
+				name = trans(nameLookup + '.title');
 
 			let value = l;
 			if (funcValue)

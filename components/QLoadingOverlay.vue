@@ -51,6 +51,10 @@ export default {
 			}, props.timeout);
 		}
 
+		if (props.signal) {
+			close();
+		}
+
 		return Object.assign(upstream, {
 		});
 	}
