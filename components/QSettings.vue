@@ -10,12 +10,13 @@ import QFormControl from './form/VFormControl';
 export default {
 	name: 'QSettings',
 	components: {
-		QFormControl,
+		QFormControl
 	},
 	extends: QFormControl,
 	data: () => ({
 		fab: false,
 		requestReset: 0,
+		serviceStore: null,
 		serviceUsers: null,
 		snackbar: false,
 		timeout: 2000
@@ -35,12 +36,13 @@ export default {
 			return (this.user != null && this.user.external.picture != null ? this.user.external.picture : null);
 		},
 		user() {
-			return this.$store.state.user.user;
+			return this.serviceStore.state.user;
 		}
 	},
 	async created() {
 		await this.reset(this.correlationId(), null);
 		this.serviceUsers = GlobalUtility.$injector.getService(LibraryConstants.InjectorKeys.SERVICE_USER);
+		this.serviceStore = GlobalUtility.$injector.getService(LibraryConstants.InjectorKeys.SERVICE_STORE);
 	},
 	async mount() {
 		await this.reset(this.correlationId(), null);
