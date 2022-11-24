@@ -8,6 +8,7 @@
 		:hint="$attrs.hint"
 		:label="$attrs.label"
 		:multiple="multiple"
+		:max-values="maxValues"
 		:dense="dense"
 		emit-value
 		map-options
@@ -57,6 +58,10 @@ export default {
 		},
 		items: {
 			type: [Object, Array],
+			default: null
+		},
+		maxValues: {
+			type: Number,
 			default: null
 		},
 		multiple: {
