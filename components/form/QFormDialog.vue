@@ -60,7 +60,7 @@
 					</q-btn>
 					<q-btn
 						v-if="buttonOk"
-						:disable="invalid || disabled"
+						:disable="invalid"
 						color="green darken-1"
 						text
 						@click="submit"
