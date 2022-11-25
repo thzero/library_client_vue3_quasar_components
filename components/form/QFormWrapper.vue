@@ -139,15 +139,12 @@ export default {
 		}
 	},
 	methods: {
-		clear(correlationId) {
-			this.serverErrors = [];
+		handleClear(correlationId) {
 			this.logger.debug('FormDialog', 'clear', 'clear', null, correlationId);
-			this.$nextTick(() => {
-				// this.$refs.obs.reset(correlationId);
-			});
-		},
-		handleClear() {
-			this.clear(this.correlationId());
+			// this.$nextTick(() => {
+			// 	// this.$refs.obs.reset(correlationId);
+			// });
+			this.reset(this.correlationId(), false);
 		},
 		async handleDelete() {
 			this.serverErrors = [];
@@ -171,17 +168,12 @@ export default {
 
 			this.logger.debug('FormDialog', 'handleDeleteConfirmOk', 'delete', null, correlationId);
 			this.$emit('ok');
-			this.clear(correlationId);
+			this.handleClear(correlationId);
 		},
 		async reset(correlationId, value) {
-			await this.validation.$validate();
-			const timer = setInterval(async () => {
-				clearInterval(timer);
-				const el = document.getElementsByClassName('v-card__text');
-				if (el && el.length > 0)
-					el[0].scrollTop = 0;
-			}, 25);
 			await this.resetFormI(correlationId, value);
+			this.serverErrors = [];
+			await this.validation.$validate();
 		},
 		async resetFormI(correlationId, value) {
 			if (this.resetForm)
@@ -214,7 +206,6 @@ export default {
 
 			this.logger.debug('FormDialog', 'submit', 'ok', null, correlationId);
 			this.$emit('ok');
-			this.clear(correlationId);
 		}
 	}
 };
