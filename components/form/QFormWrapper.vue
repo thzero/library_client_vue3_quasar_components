@@ -60,7 +60,7 @@
 		</q-card>
 		<QConfirmationDialog
 			v-if="buttonDelete"
-			:non-recoverable="true"
+			:non-recoverable="nonRecoverable"
 			:signal="dialogDeleteConfirmSignal.signal"
 			@cancel="dialogDeleteConfirmSignal.cancelI()"
 			@ok="handleDeleteConfirmOk"
@@ -102,6 +102,10 @@ export default {
 		label: {
 			type: String,
 			default: null
+		},
+		nonRecoverable: {
+			type: Boolean,
+			default: false
 		},
 		preCompleteDelete: {
 			type: Function,

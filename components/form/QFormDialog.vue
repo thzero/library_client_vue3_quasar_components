@@ -72,7 +72,7 @@
 		</q-dialog>
 		<QConfirmationDialog
 			v-if="buttonDelete"
-			:non-recoverable="true"
+			:non-recoverable="nonRecoverable"
 			:signal="dialogDeleteConfirmSignal.signal"
 			@cancel="dialogDeleteConfirmSignal.cancelI()"
 			@ok="handleDeleteConfirmOk"
@@ -92,6 +92,12 @@ export default {
 		QConfirmationDialog
 	},
 	extends: baseFormDialogControl,
+	props: {
+		nonRecoverable: {
+			type: Boolean,
+			default: false
+		}
+	},
 	setup (props) {
 		return Object.assign(baseFormDialogControl.setup(props), {
 		});
