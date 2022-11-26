@@ -1,25 +1,17 @@
 <template>
 	<q-footer
 		elevated
-		class="bg-secondary text-white"
+		class="text-white"
 	>
 		<q-toolbar>
-			<QVersion :value="version" />
 			<q-toolbar-title>
-				© 2020
-				<a
-					class="ml-1"
-					target="_blank"
-					href="https://thzero.com"
-				>
-					thZero.com
-				</a>
+				<QVersion :value="version" />
 			</q-toolbar-title>
 			<span
 				v-if="isDev"
 				style="padding-left: 4px;"
 			>
-				{{ breakpointName }}
+				{{ environmentName }}
 			</span>
 		</q-toolbar>
 	</q-footer>
@@ -43,11 +35,17 @@ export default {
 		QVersion
 	},
 	extends: base,
+	props: {
+		nonRecoverable: {
+			type: String,
+			default: 'messages.dev'
+		}
+	},
 	setup(props) {
 		const version = ref({});
 
-		const breakpointName = computed(() => {
-			return LibraryUtility.isDev ? '// TODO' : '';
+		const environmentName = computed(() => {
+			return LibraryUtility.isDev ? GlobalUtility.$trans.t('messages.dev') : '';
 		});
 		const isDev = computed(() => {
 			return LibraryUtility.isDev;
@@ -64,26 +62,10 @@ export default {
 
 		return Object.assign(base.setup(props), {
 			version,
-			breakpointName,
+			environmentName,
 			isDev
 		});
 	}
-	// data: () => ({
-	// 	version: {}
-	// }),
-	// computed: {
-	// 	breakpointName() {
-	// 		// return LibraryUtility.isDev ? this.$vuetify.breakpoint.name : '';
-	// 		return LibraryUtility.isDev ? '// TODO' : '';
-	// 	},
-	// 	isDev() {
-	// 		return LibraryUtility.isDev;
-	// 	}
-	// },
-	// async created() {
-	// 	await this.$store.dispatcher.root.getVersion(this.correlationId());
-	// 	this.version = this.$store.state.version;
-	// }
 };
 </script>
 
