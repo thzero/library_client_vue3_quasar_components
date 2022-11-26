@@ -39,6 +39,7 @@
 											v-if="item2.url"
 											class="opensource-padding"
 											:href="item2.url"
+											target="_blank"
 										>
 											{{ item2.name }}
 										</a>
@@ -54,6 +55,7 @@
 											v-if="item2.licenseUrl"
 											class="opensource-padding"
 											:href="item2.licenseUrl"
+											target="_blank"
 										>
 											{{ item2.licenseName }}
 										</a>
@@ -99,6 +101,7 @@
 											v-if="item2.url"
 											class="opensource-padding"
 											:href="item2.url"
+											target="_blank"
 										>
 											{{ item2.name }}
 										</a>
@@ -114,6 +117,7 @@
 											v-if="item2.licenseUrl"
 											class="opensource-padding"
 											:href="item2.licenseUrl"
+											target="_blank"
 										>
 											{{ item2.licenseName }}
 										</a>

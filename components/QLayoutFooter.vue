@@ -4,9 +4,9 @@
 		class="text-white"
 	>
 		<q-toolbar>
-			<q-toolbar-title>
-				<QVersion :value="version" />
-			</q-toolbar-title>
+			<QVersion :value="version" />
+			<q-space />
+			<QCopyright :value="version" />
 			<span
 				v-if="isDev"
 				style="padding-left: 4px;"
@@ -26,12 +26,13 @@ import LibraryUtility from '@thzero/library_common/utility';
 import GlobalUtility from '@thzero/library_client/utility/global';
 
 import base from '@/library_vue/components/base';
+import QCopyright from './QCopyright';
 import QVersion from './QVersion';
 
 export default {
 	name: 'QLayoutFooter',
 	components: {
-		// eslint-disable-next-line
+		QCopyright,
 		QVersion
 	},
 	extends: base,
