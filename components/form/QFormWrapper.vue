@@ -144,7 +144,7 @@ export default {
 	},
 	methods: {
 		handleClear(correlationId) {
-			this.logger.debug('FormDialog', 'clear', 'clear', null, correlationId);
+			this.logger.debug('FormWrapper', 'clear', 'clear', null, correlationId);
 			// this.$nextTick(() => {
 			// 	// this.$refs.obs.reset(correlationId);
 			// });
@@ -163,15 +163,14 @@ export default {
 
 			if (this.preCompleteDelete) {
 				const response = await this.preCompleteDelete(correlationId);
-				this.logger.debug('FormDialog', 'handleDeleteConfirmOk', 'response', response, correlationId);
+				this.logger.debug('FormWrapper', 'handleDeleteConfirmOk', 'response', response, correlationId);
 				if (this.hasFailed(response)) {
 					// VueUtility.handleError(this.$refs.obs, this.serverErrors, response, correlationId);
 					return;
 				}
 			}
 
-			this.logger.debug('FormDialog', 'handleDeleteConfirmOk', 'delete', null, correlationId);
-			this.$emit('ok');
+			this.logger.debug('FormWrapper', 'handleDeleteConfirmOk', 'delete', null, correlationId);
 			this.handleClear(correlationId);
 		},
 		async reset(correlationId, value) {
@@ -189,26 +188,25 @@ export default {
 		},
 		async submit() {
 			this.serverErrors = [];
-
 			const correlationId = this.correlationId();
 
 			// const result = await this.$refs.obs.validate(correlationId);
 			const result = await this.validation.$validate();
-			this.logger.debug('FormDialog', 'submit', 'result', result, correlationId);
+			this.logger.debug('FormWrapper', 'submit', 'result', result, correlationId);
 			if (!result)
 				return;
 
 			let response = { success: true, route: null };
 			if (this.preCompleteOk) {
 				response = await this.preCompleteOk(correlationId);
-				this.logger.debug('FormDialog', 'submit', 'response', response, correlationId);
+				this.logger.debug('FormWrapper', 'submit', 'response', response, correlationId);
 				if (this.hasFailed(response)) {
 					// VueUtility.handleError(this.$refs.obs, this.serverErrors, response, correlationId);
 					return;
 				}
 			}
 
-			this.logger.debug('FormDialog', 'submit', 'ok', null, correlationId);
+			this.logger.debug('FormWrapper', 'submit', 'ok', null, correlationId);
 			this.$emit('ok');
 		}
 	}
