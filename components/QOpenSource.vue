@@ -146,7 +146,27 @@ export default {
 	name: 'QOpenSource',
 	extends: baseOpenSource,
 	setup(props) {
-			return Object.assign(baseOpenSource.setup(props), {
+		const initializeDependenciesClientFramework = async () => {
+			return [
+					{
+						category: 'client',
+						name: 'quasar',
+						url: 'https://github.com/quasarframework/quasar',
+						licenseName: 'MIT',
+						licenseUrl: 'https://github.com/quasarframework/quasar/blob/dev/LICENSE'
+					},
+					{
+						category: 'client',
+						name: '@thzero/library_client_vue3_quasar',
+						url: 'https://github.com/thzero/library_client_vue3_quasar',
+						licenseName: 'MIT',
+						licenseUrl: 'https://github.com/thzero/library_client_vue3_quasar/blob/master/license.md'
+					}
+			];
+		};
+
+		return Object.assign(baseOpenSource.setup(props), {
+			initializeDependenciesClientFramework
 		});
 	}
 };

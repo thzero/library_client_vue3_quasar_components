@@ -68,12 +68,6 @@ export default {
 		QConfirmationDialog
 	},
 	extends: baseFormDialogControl,
-	props: {
-		nonRecoverable: {
-			type: Boolean,
-			default: false
-		}
-	},
 	setup (props) {
 		return Object.assign(baseFormDialogControl.setup(props), {
 		});
